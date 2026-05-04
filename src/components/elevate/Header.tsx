@@ -32,7 +32,7 @@ export const Header = () => {
         scrolled ? "shadow-soft" : ""
       }`}
     >
-      <div className="container mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+      <div className="container mx-auto px-6 lg:px-10 flex items-center justify-between h-28">
         <Logo />
 
         <nav className="hidden lg:flex items-center gap-8" aria-label="Principal">
