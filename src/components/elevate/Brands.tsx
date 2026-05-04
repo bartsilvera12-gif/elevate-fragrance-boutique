@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { brands } from "@/data/products";
 import { SectionTitle } from "./SectionTitle";
 
@@ -11,9 +12,9 @@ export const Brands = () => (
       />
       <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {brands.map((b) => (
-          <a
+          <Link
             key={b.name}
-            href="#catalogo"
+            to="/catalogo"
             className="group relative overflow-hidden border border-border/60 hover:border-gold transition-elegant aspect-[3/4] flex flex-col justify-end p-8 bg-cream/40 hover:shadow-elegant"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-gold/10 group-hover:from-primary/15 transition-elegant" />

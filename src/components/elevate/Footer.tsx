@@ -1,4 +1,5 @@
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
 import { WHATSAPP_NUMBER } from "@/data/products";
 
@@ -17,11 +18,10 @@ export const Footer = () => (
         <div>
           <h4 className="text-xs tracking-[0.3em] uppercase text-gold-light mb-5">Navegación</h4>
           <ul className="space-y-3 text-sm text-cream/80">
-            <li><a href="#catalogo" className="hover:text-gold-light transition-smooth">Catálogo</a></li>
-            <li><a href="#marcas" className="hover:text-gold-light transition-smooth">Marcas</a></li>
-            <li><a href="#promociones" className="hover:text-gold-light transition-smooth">Promociones</a></li>
-            <li><a href="#quienes-somos" className="hover:text-gold-light transition-smooth">Quiénes somos</a></li>
-            <li><a href="#politicas" className="hover:text-gold-light transition-smooth">Políticas</a></li>
+            <li><Link to="/catalogo" className="hover:text-gold-light transition-smooth">Catálogo</Link></li>
+            <li><Link to="/marcas" className="hover:text-gold-light transition-smooth">Marcas</Link></li>
+            <li><Link to="/nosotros" className="hover:text-gold-light transition-smooth">Quiénes somos</Link></li>
+            <li><Link to="/faq" className="hover:text-gold-light transition-smooth">FAQ y Políticas</Link></li>
           </ul>
         </div>
 
