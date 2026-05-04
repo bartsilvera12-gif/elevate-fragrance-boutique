@@ -1,10 +1,15 @@
-import logo from "@/assets/elevate-logo.jpg";
+import logo from "@/assets/elevate-logo.png";
+import { Link } from "react-router-dom";
 
 export const Logo = ({ variant = "dark" }: { variant?: "dark" | "light" }) => (
-  <a href="#top" className="flex items-center gap-3 group" aria-label="Elevate inicio">
-    <div className="h-10 w-10 rounded-full overflow-hidden ring-1 ring-gold/40 shadow-soft">
-      <img src={logo} alt="Elevate logo" className="h-full w-full object-cover" width={40} height={40} />
-    </div>
+  <Link to="/" className="flex items-center gap-3 group" aria-label="Elevate inicio">
+    <img
+      src={logo}
+      alt="Elevate logo"
+      className="h-12 w-12 object-contain"
+      width={48}
+      height={48}
+    />
     <div className="leading-none">
       <div className={`font-display text-2xl tracking-[0.18em] ${variant === "light" ? "text-cream" : "text-primary"}`}>
         ELEVATE
@@ -13,5 +18,5 @@ export const Logo = ({ variant = "dark" }: { variant?: "dark" | "light" }) => (
         MAISON DE PARFUM
       </div>
     </div>
-  </a>
+  </Link>
 );
