@@ -15,6 +15,7 @@ const Home = () => (
     <Bestsellers />
     <Promos />
     <NewArrivals />
+    <Reviews />
 
     {/* CTA al catálogo */}
     <section className="py-24 lg:py-32 bg-cream/30">
