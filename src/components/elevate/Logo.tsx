@@ -6,9 +6,9 @@ export const Logo = ({ variant = "dark" }: { variant?: "dark" | "light" }) => (
     <img
       src={logo}
       alt="Elevate logo"
-      className="h-14 w-14 object-contain"
-      width={56}
-      height={56}
+      className="h-20 w-20 md:h-24 md:w-24 object-contain"
+      width={96}
+      height={96}
     />
     <div className="leading-none">
       <div className={`font-display text-2xl tracking-[0.18em] ${variant === "light" ? "text-cream" : "text-primary"}`}>
