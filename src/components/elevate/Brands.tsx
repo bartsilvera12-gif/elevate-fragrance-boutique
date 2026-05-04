@@ -29,7 +29,7 @@ export const Brands = () => (
               <div className="gold-divider w-12 my-3" />
               <p className="text-sm text-muted-foreground font-editorial italic">{b.description}</p>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </div>
