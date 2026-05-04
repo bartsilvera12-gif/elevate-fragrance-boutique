@@ -3,8 +3,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import { CartProvider } from "@/context/CartContext";
+import Home from "./pages/Home";
+import Catalog from "./pages/Catalog";
+import BrandsPage from "./pages/BrandsPage";
+import AboutPage from "./pages/AboutPage";
+import FAQPage from "./pages/FAQPage";
+import Checkout from "./pages/Checkout";
+import Confirmation from "./pages/Confirmation";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -14,11 +21,18 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <CartProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/catalogo" element={<Catalog />} />
+            <Route path="/marcas" element={<BrandsPage />} />
+            <Route path="/nosotros" element={<AboutPage />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/confirmacion" element={<Confirmation />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </CartProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
