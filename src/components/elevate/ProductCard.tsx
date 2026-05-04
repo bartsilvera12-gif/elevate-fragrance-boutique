@@ -1,4 +1,5 @@
-import { Product, formatPrice, buildWhatsAppLink } from "@/data/products";
+import { Product, formatPrice } from "@/data/products";
+import { useCart } from "@/context/CartContext";
 
 const statusMap: Record<Product["status"], { label: string; cls: string }> = {
   available: { label: "Disponible", cls: "text-gold border-gold/40" },
@@ -10,6 +11,7 @@ const statusMap: Record<Product["status"], { label: string; cls: string }> = {
 export const ProductCard = ({ product }: { product: Product }) => {
   const s = statusMap[product.status];
   const disabled = product.status === "out" || product.status === "soon";
+  const { add } = useCart();
 
   return (
     <article className="group relative bg-background border border-border/60 hover:border-gold/60 transition-elegant shadow-soft hover:shadow-elegant flex flex-col overflow-hidden">
@@ -49,26 +51,18 @@ export const ProductCard = ({ product }: { product: Product }) => {
           <span className="text-lg text-primary font-medium">{formatPrice(product.price)}</span>
         </div>
 
-        <div className="mt-auto pt-5 flex flex-col gap-2">
-          <a
-            href={`#producto-${product.slug}`}
-            className="text-center text-[11px] tracking-[0.3em] uppercase py-3 border border-primary/80 text-primary hover:bg-primary hover:text-primary-foreground transition-elegant"
-          >
-            Ver detalle
-          </a>
-          <a
-            href={disabled ? "#" : buildWhatsAppLink(product.name, product.price)}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-disabled={disabled}
-            className={`text-center text-[11px] tracking-[0.3em] uppercase py-3 transition-elegant ${
+        <div className="mt-auto pt-5">
+          <button
+            onClick={() => !disabled && add(product)}
+            disabled={disabled}
+            className={`w-full text-[11px] tracking-[0.3em] uppercase py-3 transition-elegant ${
               disabled
-                ? "bg-muted text-muted-foreground cursor-not-allowed pointer-events-none"
+                ? "bg-muted text-muted-foreground cursor-not-allowed"
                 : "bg-primary text-primary-foreground hover:bg-primary-glow shadow-soft"
             }`}
           >
-            {disabled ? "No disponible" : "Consultar por WhatsApp"}
-          </a>
+            {disabled ? "No disponible" : "Agregar al carrito"}
+          </button>
         </div>
       </div>
     </article>
