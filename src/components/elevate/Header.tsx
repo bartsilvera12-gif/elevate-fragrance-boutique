@@ -28,8 +28,8 @@ export const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-elegant ${
-        scrolled || location.pathname !== "/" ? "bg-background/95 backdrop-blur-md shadow-soft" : "bg-background/40 backdrop-blur-sm"
+      className={`fixed top-0 inset-x-0 z-50 transition-elegant bg-background/95 backdrop-blur-md ${
+        scrolled ? "shadow-soft" : ""
       }`}
     >
       <div className="container mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
