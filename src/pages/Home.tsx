@@ -3,6 +3,7 @@ import { Hero } from "@/components/elevate/Hero";
 import { Bestsellers } from "@/components/elevate/Bestsellers";
 import { Promos } from "@/components/elevate/Promos";
 import { NewArrivals } from "@/components/elevate/NewArrivals";
+import { Reviews } from "@/components/elevate/Reviews";
 import { Link } from "react-router-dom";
 
 const Home = () => (
