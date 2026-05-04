@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-perfume.jpg";
 
 export const Hero = () => (
@@ -32,18 +33,18 @@ export const Hero = () => (
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row gap-4">
-          <a
-            href="#catalogo"
+          <Link
+            to="/catalogo"
             className="inline-flex items-center justify-center px-8 py-4 bg-cream text-primary text-xs tracking-[0.3em] uppercase hover:bg-gold hover:text-cream transition-elegant shadow-elegant"
           >
             Ver catálogo
-          </a>
-          <a
-            href="#marcas"
+          </Link>
+          <Link
+            to="/marcas"
             className="inline-flex items-center justify-center px-8 py-4 border border-gold/60 text-cream text-xs tracking-[0.3em] uppercase hover:bg-gold/10 transition-elegant"
           >
             Explorar marcas
-          </a>
+          </Link>
         </div>
       </div>
     </div>
