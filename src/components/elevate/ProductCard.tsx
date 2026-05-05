@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Product, formatPrice } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 
@@ -15,7 +16,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
 
   return (
     <article className="group relative bg-background border border-border/60 hover:border-gold/60 transition-elegant shadow-soft hover:shadow-elegant flex flex-col overflow-hidden">
-      <div className="relative aspect-[4/5] overflow-hidden bg-cream">
+      <Link to={`/producto/${product.slug}`} className="relative aspect-[4/5] overflow-hidden bg-cream block" aria-label={`Ver ${product.name}`}>
         <img
           src={product.image}
           alt={`${product.name} de ${product.brand}`}
@@ -37,11 +38,13 @@ export const ProductCard = ({ product }: { product: Product }) => {
         <span className={`absolute top-4 right-4 bg-background/90 text-[10px] tracking-[0.2em] uppercase px-2.5 py-1 border ${s.cls}`}>
           {s.label}
         </span>
-      </div>
+      </Link>
 
       <div className="p-6 flex flex-col gap-2 flex-1">
         <div className="text-[10px] tracking-[0.3em] uppercase text-gold">{product.brand}</div>
-        <h3 className="font-display text-xl text-foreground leading-tight">{product.name}</h3>
+        <Link to={`/producto/${product.slug}`} className="hover:text-primary transition-elegant">
+          <h3 className="font-display text-xl text-foreground leading-tight">{product.name}</h3>
+        </Link>
         <div className="text-sm text-muted-foreground italic font-editorial">{product.type}</div>
 
         <div className="mt-3 flex items-baseline gap-3">
