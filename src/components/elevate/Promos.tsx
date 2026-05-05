@@ -16,7 +16,9 @@ export const Promos = () => {
         />
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {list.map((p) => (
-            <ProductCard key={p.id} product={p} />
+            <div key={p.id} className="promo-card">
+              <ProductCard product={p} />
+            </div>
           ))}
         </div>
       </div>
