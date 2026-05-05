@@ -204,3 +204,17 @@
     animation: none !important;
   }
 }
+
+/* Bestsellers rotation animation */
+@keyframes bestseller-rotate-in {
+  0% { opacity: 0; transform: translateY(30px) rotateX(-12deg) scale(0.95); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0) scale(1); filter: blur(0); }
+}
+.bestseller-rotate {
+  animation: bestseller-rotate-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: center top;
+  perspective: 1000px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bestseller-rotate { animation: none !important; }
+}
