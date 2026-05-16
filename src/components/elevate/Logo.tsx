@@ -15,7 +15,7 @@ export const Logo = ({ variant = "dark" }: { variant?: "dark" | "light" }) => (
         ELEVATE
       </div>
       <div className={`text-[10px] tracking-[0.3em] mt-1 ${variant === "light" ? "text-gold-light" : "text-gold"}`}>
-        MAISON DE PARFUM
+        La esencia de tu próximo negocio
       </div>
     </div>
   </Link>
