@@ -1,31 +1,14 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { products } from "@/data/products";
 import { ProductCard } from "./ProductCard";
 import { SectionTitle } from "./SectionTitle";
 
-const ROTATION_MS = 5000;
-
 export const Bestsellers = () => {
   const pool = useMemo(() => products.filter((p) => p.bestseller), []);
-  const pickRandom = (exclude: string[] = []) => {
-    const available = pool.filter((p) => !exclude.includes(p.id));
-    const source = available.length >= 3 ? available : pool;
-    const shuffled = [...source].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, 3);
-  };
 
-  const [current, setCurrent] = useState(() => pickRandom());
-  const [animKey, setAnimKey] = useState(0);
-
-  useEffect(() => {
-    if (pool.length <= 3) return;
-    const id = setInterval(() => {
-      setCurrent((prev) => pickRandom(prev.map((p) => p.id)));
-      setAnimKey((k) => k + 1);
-    }, ROTATION_MS);
-    return () => clearInterval(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pool]);
+  // Duplicamos SOLO a nivel render para lograr el loop infinito sin saltos.
+  // Los datos reales (products) no se tocan.
+  const loop = useMemo(() => [...pool, ...pool], [pool]);
 
   return (
     <section id="mas-vendidos" className="py-24 lg:py-32 bg-background">
@@ -35,16 +18,18 @@ export const Bestsellers = () => {
           title="Las fragancias preferidas de la casa"
           subtitle="Aquellas que vuelven una y otra vez. Carácter, presencia y aprobación unánime."
         />
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-          {current.map((p, i) => (
-            <div
-              key={`${animKey}-${p.id}`}
-              className="bestseller-rotate"
-              style={{ animationDelay: `${i * 0.15}s` }}
-            >
-              <ProductCard product={p} />
-            </div>
-          ))}
+
+        <div className="mt-14 bestseller-marquee">
+          <div className="bestseller-marquee-track gap-7">
+            {loop.map((p, i) => (
+              <div
+                key={`${p.id}-${i}`}
+                className="shrink-0 w-[78vw] max-w-[20rem] sm:w-72 sm:max-w-none md:w-[20rem] lg:w-[19rem] xl:w-[22rem]"
+              >
+                <ProductCard product={p} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

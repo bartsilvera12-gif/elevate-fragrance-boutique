@@ -13,8 +13,8 @@ export const WhatsAppFloat = () => (
     <div className="relative bg-gold text-gold-foreground h-14 w-14 rounded-full flex items-center justify-center shadow-gold hover:bg-primary hover:text-primary-foreground transition-elegant">
       <MessageCircle size={24} />
     </div>
-    <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-primary text-cream text-xs tracking-widest uppercase px-4 py-2 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-elegant pointer-events-none">
-      Consultar
+    <span className="absolute bottom-full mb-3 right-0 bg-primary text-cream text-xs tracking-widest uppercase px-4 py-2 whitespace-nowrap shadow-elegant pointer-events-none">
+      Contactar WhatsApp
     </span>
   </a>
 );

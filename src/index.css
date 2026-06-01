@@ -218,3 +218,35 @@
 @media (prefers-reduced-motion: reduce) {
   .bestseller-rotate { animation: none !important; }
 }
+
+/* Bestsellers horizontal marquee (visual only) */
+.bestseller-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+.bestseller-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: bestseller-marquee 58s linear infinite;
+  will-change: transform;
+}
+.bestseller-marquee:hover .bestseller-marquee-track,
+.bestseller-marquee:focus-within .bestseller-marquee-track {
+  animation-play-state: paused;
+}
+@keyframes bestseller-marquee {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bestseller-marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+  .bestseller-marquee {
+    overflow-x: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
